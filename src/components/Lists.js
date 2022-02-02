@@ -39,39 +39,49 @@ function Lists() {
           onChange={(e) => searchItems(e.target.value)}
         />
       </div>
-      <div className="flex">
-        {movieList?.results &&
-          movieList?.results.map((v) => {
-            return (
-              <div className=" card">
-                <Link to={`/detail/${v.id}`}>
-                  <div className="img">
-                    <img
-                      src={
-                        v.poster_path
-                          ? `https://image.tmdb.org/t/p/w300/${v.poster_path}`
-                          : 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
-                      }
-                    />
+      <div>
+        {movieList?.results && (
+          <>
+            <div className="flex">
+              {movieList?.results.map((v) => {
+                return (
+                  <div className=" card">
+                    <Link to={`/detail/${v.id}`}>
+                      <div className="img">
+                        <img
+                          src={
+                            v.poster_path
+                              ? `https://image.tmdb.org/t/p/w300/${v.poster_path}`
+                              : 'https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg'
+                          }
+                        />
+                      </div>
+                      <div className="info">
+                        <div className="flex">
+                          <h1>{v.title}</h1>
+                          <p className="vote">{v.vote_average}</p>
+                        </div>
+                        <p className="desc">
+                          {v.overview.slice(0, 200) + '....'}
+                        </p>
+                      </div>
+                    </Link>
                   </div>
-                  <div className="info">
-                    <div className="flex">
-                      <h1>{v.title}</h1>
-                      <p className="vote">{v.vote_average}</p>
-                    </div>
-                    <p className="desc">{v.overview.slice(0, 200) + '....'}</p>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
-      </div>
-      <div className="pages">
-        {Array.from(new Array(data?.total_pages)).map((_, i) => (
-          <button className="page" onClick={() => setPage(i + 1)}>
-            {i + 1}
-          </button>
-        ))}
+                );
+              })}
+            </div>
+            <div className="pagination">
+              {Array.from(new Array(data?.total_pages)).map((_, i) => (
+                <button
+                  className="pagination_item"
+                  onClick={() => setPage(i + 1)}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

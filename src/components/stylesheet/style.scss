@@ -130,20 +130,21 @@ a {
     font-size: 3rem;
   }
 }
-.pages {
-  margin: 2rem 0;
+.pagination {
+  margin: 2rem auto;
   display: flex;
   justify-content: space-between;
-  .page {
-    padding: 10px;
+  &_item {
+    width: 30px;
+    height: 30px;
     transition: box-shadow 300ms ease-in-out, 300ms ease-in-out;
     cursor: pointer;
     outline: 0;
     border: 2px solid #3498db;
-    border-radius: 0.6em;
+    border-radius: 2px;
     background-color: #3498db;
     color: white;
-
+    margin: 2px;
     &:hover {
       box-shadow: 0 0 40px 40px white inset;
       color: #3498db;
